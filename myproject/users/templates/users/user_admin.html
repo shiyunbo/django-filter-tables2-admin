@@ -1,0 +1,60 @@
+{% extends 'users/base.html' %}
+{% load django_tables2 %}
+
+{% block content %}
+     <div class="align-items-center row">
+             <div class="col-6 pt-2">
+                    <h5>管理用户</h5>
+             </div>
+
+             <div class="col-6">
+                     <span class="dropdown float-right">
+                        <a href="{% url 'users:user_create' %}"><button type="button" id="modal-create-btn" class="btn btn-sm btn-success"
+                                 data-toggle="tooltip" data-placement="top" title="添加用户">
+                         <i class="bi bi-plus"></i>添加用户</button></a>
+
+                    </span>
+
+              </div>
+     </div>
+
+
+    <div class="align-items-center py-1 row bg-white">
+             <div class="col-sm-6 col-md-3">
+                 <form class="" action="" method="get">
+                     <div class="input-group">
+                         <input type="text" name="query" class="form-control search-menu"
+                            autocomplete="off" placeholder="关键词" value="{{ request.GET.query }}">
+                         <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="bi bi-search" aria-hidden="true"></i>
+                                </button>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+
+              <div class="col-sm-6 col-md-9 mt-1">
+                  <span class="dropdown float-md-right">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle my-0" data-toggle="dropdown" aria-expanded="false">
+                         <i class="bi bi-funnel"></i> 过滤
+                     </button>
+                     <div class="dropdown-menu dropdown-menu-right px-3 mt-2" role="menu" style="width:280px">
+                         <form class="form-horizontal" role="form" autocomplete="off">
+                             {% include 'users/bs_form.html' with form=filter.form %}
+                             <button type="submit" class="btn btn-sm btn-info form-control">确定</button>
+                         </form>
+                     </div>
+
+                      <a href="{{ request.path }}" class="btn btn-light btn-sm">
+                      <i class="bi bi-backspace-reverse"></i> 重置
+                      </a>
+
+                    </span>
+             </div>
+
+         </div>
+        {% render_table table %}
+
+{% endblock %}
+

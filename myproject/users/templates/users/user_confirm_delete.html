@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+{% block content %}
+
+ <div class="x_title align-items-center row bg-white rounded-top">
+     <div class="col-6 pt-2">
+         <h5>删除用户</h5>
+     </div>
+ </div>
+
+<div class="align-items-center py-1 row bg-white pl-3 pb-3 border-top border-gray rounded-bottom">
+    <form method="post">{% csrf_token %}
+        <p>你确定要删除用户"{{ user }}"吗?</p>
+        <input type="submit" value="Confirm" class="btn btn-warning" />
+    </form>
+</div>
+
+{% endblock %}

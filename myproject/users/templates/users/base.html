@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="">
+    <title>Django Filter + Django Tables 2 Admin</title>
+
+    <!-- using online links -->
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+   <style>
+	@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,700);
+	body, table, th, tr, td, p
+	{
+	  font-family: 'Source Sans Pro', sans-serif;
+	  color:#666;
+	}
+	body a { color:#666 }
+	body a:hover { text-decoration:none;}
+
+</style>
+
+
+</head>
+
+<body class="bg-light">
+        <!-- head  -->
+         <div class="bg-secondary">
+			 <div class="container-fluid px-0" style="max-width: 1200px;">
+                 <!-- right-top-navbar  -->
+				<nav class="navbar row">
+				   <div class="col-6">
+				     <a class="navbar-brand text-white" href="#">
+						大江狗Django Filter + Tables2管理后台
+					</a>
+					</div>
+
+					<!-- User profile dropdown -->
+					<div class="dropdown col-6 text-right">
+                        {% if not request.user.is_authenticated %}
+					         <small><a href="/admin/" class="btn btn-sm btn-info">Login</a></small>
+                        {% else %}
+							 <a class="dropdown-toggle text-white" href="#" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{{ request.user.username }}
+							</a>
+                            <div class="dropdown-menu dropdown-menu-right mr-2 mt-2" aria-labelledby="dropdown-user">
+								<a class="dropdown-item text-muted" href="/admin/logout/">Log Out</a>
+                            </div>
+                        {% endif %}
+                    </div>
+
+				  </nav>
+			 </div>
+        </div>
+		 <!-- End of head  -->
+
+
+
+		<div class="container-fluid py-0 mt-3" style="max-width: 1200px;">
+	          <!-- Start of x_box 1 -->
+              <div class="mx-md-3">
+				  {% block content %}
+
+                {% endblock %}
+                </div><!-- End of x_box -->
+          </div>
+
+
+    <!-- using online scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+    </script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

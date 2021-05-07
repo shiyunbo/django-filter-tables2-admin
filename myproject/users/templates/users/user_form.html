@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+{% block content %}
+ <div class="align-items-center row bg-white rounded-top">
+     <div class="col-6 pt-2">
+         <h5>{% if object %}编辑用户 {% else %} 添加用户 {% endif %}</h5>
+     </div>
+ </div>
+
+<div class="align-items-center py-1 row bg-white pl-3 pb-3 border-top border-gray rounded-bottom">
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     {% include 'users/bs_form.html' with form=form %}
+    <p><input type="submit" class="btn btn-success" value="Submit"></p>
+    </form>
+</div>
+{% endblock %}
